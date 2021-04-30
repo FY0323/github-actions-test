@@ -5,8 +5,7 @@ on:
     - main
 
 jobs:
-  test and build:
-    name: 
+  test-and-build:
     runs-on: ubuntu-latest
     steps:
     - name: setup
@@ -15,9 +14,6 @@ jobs:
         go-version: 1.15
     - name: checkout
       uses: actions/checkout@v2
-    # If you need go modules, set some values
-    #- name: go modules
-    #  run: 
     - name: go test
       run: |
         go test -v .
