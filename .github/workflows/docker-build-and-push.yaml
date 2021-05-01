@@ -3,7 +3,7 @@ on:
   pull_request:
     branches:
     - main
-    type: [closed]
+    types: [closed]
 
 jobs:
   test-and-build:
