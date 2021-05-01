@@ -29,6 +29,7 @@ jobs:
     - name: checkout
       uses: actions/checkout@v2
     - name: build container image
+      uses: docker/build-push-action@v1
       with:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
