@@ -39,7 +39,7 @@ jobs:
         context: .
         file: dockerfile
         push: true
-        tags: ghcr.io/sample-app:latest
+        tags: ghcr.io/fy0323/sample-app:latest
   #docker-build-and-push:
   #  needs: test-and-build
   #  runs-on: ubuntu-latest
