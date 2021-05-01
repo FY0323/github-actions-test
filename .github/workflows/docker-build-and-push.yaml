@@ -1,9 +1,9 @@
-name: Continuous Integration example by GitHub Actions
+name: CI docker build and push
 on: 
   pull_request:
     branches:
     - main
-    types: [closed]
+    #types: [closed]
 
 jobs:
   test-and-build:
