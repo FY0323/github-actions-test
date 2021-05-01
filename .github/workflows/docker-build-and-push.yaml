@@ -18,9 +18,6 @@ jobs:
     - name: go test
       run: |
         go test -v .
-    - name: build
-      run: |
-        go build main.go
 
   docker-build-and-push:
     needs: test-and-build
