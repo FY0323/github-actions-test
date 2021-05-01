@@ -35,10 +35,17 @@ jobs:
         registry: ghcr.io
         username: ${{ github.repository_owner }}
         password: ${{ secrets.CR_PAT }}
+    #- name: build container image
+    #  uses: docker/build-push-action@v2
+    #  with:
+    #    context: ./app/
+    #    file: dockerfile
+    #    push: true
+    #    tags: ghcr.io/${{ secrets.USERNAME }}/sample-app:${{ github.sha }}
     - name: build container image
-      uses: docker/build-push-action@v2
-      with:
-        context: ./app/
-        file: app/dockerfile
-        push: true
-        tags: ghcr.io/${{ secrets.USERNAME }}/sample-app:${{ github.sha }}
+      env:
+        REPO_USERNAME: ${{ secrets.USERNAME }}
+        IMAGE_TAG: ${{ github.sha }}
+      run: |
+        docker build -t ghcr.io/$REPO_USERNAME/sample-app:$IMAGE_TAG ./app/
+        docker push ghcr.io/$REPO_USERNAME/sample-app:$IMAGE_TAG
