@@ -1,4 +1,4 @@
-name: Continuous Integration example by GitHub Actions
+name: CI test and build Go code
 on: 
   pull_request:
     branches:

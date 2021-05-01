@@ -39,4 +39,4 @@ jobs:
         context: .
         file: dockerfile
         push: true
-        tags: ghcr.io/${{ secrets.USERNAME }}/sample-app:latest
+        tags: ghcr.io/${{ secrets.USERNAME }}/sample-app:${{ github.sha }}
