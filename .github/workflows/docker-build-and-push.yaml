@@ -60,4 +60,4 @@ jobs:
         context: .
         file: dockerfile
         push: true
-        tags: docker.pkg.github.com/${{ github.repository_owner }}/${{ github.repository }}/sample-app:latest
+        tags: docker.pkg.github.com/${{ github.repository_owner }}/sample-app:latest
