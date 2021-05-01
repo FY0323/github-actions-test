@@ -19,7 +19,7 @@ jobs:
       uses: actions/checkout@v2
     - name: go test
       run: |
-        go test -v .
+        go test -v ./app
 
   docker-build-and-push:
     needs: test-and-build
