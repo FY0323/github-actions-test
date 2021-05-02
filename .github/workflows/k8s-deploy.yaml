@@ -1,20 +1,32 @@
-name: CD deploy container to Amazon EKS
+name: CD deploy container to Kubernetes
 on: 
   pull_request:
     branches:
     - main
     paths:
     - 'manifest/**'
+    - 'app/**'
 
 jobs:
-  deploy-to-EKS:
-    name: 
+  validation:
+    name: validate k8s manifest
     runs-on: ubuntu-latest
     steps:
     - name: checkout
       uses: actions/checkout@v2
-    #- name: validate
-    #  uses: 
+    - name: validation
+      uses: instrumenta/kubeval-action@master
+      with:
+        files: ./manifest/
+        version: 1.18
+
+  deploy-to-EKS:
+    name: deploy manifests to k8s
+    needs: validation
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2
     - name: login to AWS
       uses: aws-actions/configure-aws-credentials@v1
       with:
