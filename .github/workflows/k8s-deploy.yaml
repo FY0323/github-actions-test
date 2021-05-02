@@ -22,7 +22,7 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ap-northeast-1
     - name: set kubectl
-      uses: uses: azure/setup-kubectl@v1
+      uses: azure/setup-kubectl@v1
     - name: deploy
       env:
         KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
