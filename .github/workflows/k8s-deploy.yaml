@@ -29,4 +29,4 @@ jobs:
       run: |
         echo "$KUBE_CONFIG" > /tmp/kubeconfig
         export KUBECONFIG=/tmp/kubeconfig
-        kubectl get pods -A
+        kubectl apply -f manifest/

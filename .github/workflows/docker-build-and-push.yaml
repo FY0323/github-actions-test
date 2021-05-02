@@ -41,7 +41,7 @@ jobs:
         context: ./app
         file: dockerfile
         push: true
-        tags: ghcr.io/${{ secrets.USERNAME }}/sample-app:${{ github.sha }}
+        tags: ghcr.io/${{ secrets.USERNAME }}/sample-app:latest
     #- name: build container image
     #  env:
     #    REPO_USERNAME: ${{ secrets.USERNAME }}
