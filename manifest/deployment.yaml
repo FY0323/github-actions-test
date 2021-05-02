@@ -5,7 +5,7 @@ metadata:
   labels:
     app: sample
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: sample
@@ -19,6 +19,8 @@ spec:
         image: ghcr.io/fy0323/sample-app:latest
         ports:
         - containerPort: 80
+      imagePullSecrets:
+      - name: regcred
 
 ---
 apiVersion: v1
