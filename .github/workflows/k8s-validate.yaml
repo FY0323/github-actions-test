@@ -1,24 +1,24 @@
-name: CI test Go code
+name: CD validate Kubernetes manifests
 on: 
   pull_request:
     branches:
     - main
     paths:
+    - 'manifest/**'
     - 'app/**'
 
 jobs:
-  test-and-build:
+  validation:
+    name: validate k8s manifest
     runs-on: ubuntu-latest
     steps:
-    - name: setup
-      uses: actions/setup-go@v1
-      with:
-        go-version: 1.15
     - name: checkout
       uses: actions/checkout@v2
-    - name: go test
-      run: |
-        go test -v ./app
+    - name: validation
+      uses: instrumenta/kubeval-action@master
+      with:
+        files: ./manifest/
+        version: 1.18
     - name: notification
       uses: 8398a7/action-slack@v3
       with:
