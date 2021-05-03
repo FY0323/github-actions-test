@@ -9,7 +9,6 @@ on:
 
 jobs:
   docker-build-and-push:
-    needs: test-and-build
     runs-on: ubuntu-latest
     steps:
     - name: checkout
