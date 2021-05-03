@@ -3,8 +3,8 @@ on:
   pull_request:
     branches:
     - main
-    #paths: 
-    #- 'app/**'
+    paths: 
+    - 'app/**'
     types: [closed]
 
 jobs:
@@ -42,10 +42,11 @@ jobs:
         file: dockerfile
         push: true
         tags: ghcr.io/${{ secrets.USERNAME }}/sample-app:latest
-    #- name: build container image
-    #  env:
-    #    REPO_USERNAME: ${{ secrets.USERNAME }}
-    #    IMAGE_TAG: ${{ github.sha }}
-    #  run: |
-    #    docker build -t ghcr.io/$REPO_USERNAME/sample-app:$IMAGE_TAG ./app/
-    #    docker push ghcr.io/$REPO_USERNAME/sample-app:$IMAGE_TAG
+    - name: notification
+      uses: 8398a7/action-slack@v3
+      with:
+        status: ${{ job.status }}
+        fields: repo,message,commit,author,action,eventName,ref,workflow,job,took
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      if: always() 
