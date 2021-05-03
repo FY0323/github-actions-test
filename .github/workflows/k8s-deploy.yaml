@@ -30,6 +30,8 @@ jobs:
 
   deploy-to-EKS:
     name: deploy manifests to k8s
+    environment:
+      name: test
     needs: validation
     runs-on: ubuntu-latest
     steps:
