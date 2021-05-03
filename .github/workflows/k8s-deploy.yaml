@@ -31,6 +31,10 @@ jobs:
         echo "$KUBE_CONFIG" > /tmp/kubeconfig
         export KUBECONFIG=/tmp/kubeconfig
         kubectl apply -f manifest/
+    - name: pod test
+      run: |
+        chmod manifest/test.sh
+        ./test.sh
     - name: notification
       uses: 8398a7/action-slack@v3
       with:
