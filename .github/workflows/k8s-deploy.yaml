@@ -33,7 +33,7 @@ jobs:
     - name: pod test
       run: |
         chmod +x manifest/test.sh
-        ./test.sh
+        sh ./manifest/test.sh
     - name: notification
       uses: 8398a7/action-slack@v3
       with:
