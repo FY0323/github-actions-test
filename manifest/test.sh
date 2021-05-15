@@ -5,7 +5,7 @@ kubectl run --restart=Never nginx --image=nginx
 
 
 echo "wait"
-sleep 3
+sleep 15
 echo "start test"
 
 kubectl exec -it nginx -- curl -m 5 http://sample-app
